@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * 系统配置swagger
  * </p>
  *
- * @author vecny
+ * @author veceny
  * @since 2022-09-18
  */
 @Configuration
@@ -23,12 +23,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Swagger2Configuration {
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_12)
                 .apiInfo(apiInfo())
                 .enable(true)
                 .select()
-                .apis(RequestHandlerSelectors.any())
-                //配置swagger 扫描路径
+                .apis(RequestHandlerSelectors.basePackage("com.dhcc.dhcwl.report.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
